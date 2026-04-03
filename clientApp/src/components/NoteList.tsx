@@ -1,4 +1,4 @@
-import { useLiveQuery } from 'dexie'
+import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db'
 import type { Note } from '../db'
 import './NoteList.css'

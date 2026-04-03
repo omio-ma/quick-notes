@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { useLiveQuery } from 'dexie'
+import { useLiveQuery } from 'dexie-react-hooks'
 import NoteList from './NoteList'
 import type { Note } from '../db'
 
-vi.mock('dexie', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('dexie')>()
-  return { ...actual, useLiveQuery: vi.fn() }
-})
+vi.mock('dexie-react-hooks', () => ({
+  useLiveQuery: vi.fn(),
+}))
 
 vi.mock('../db', () => ({
   db: { notes: { put: vi.fn(), delete: vi.fn() } },
